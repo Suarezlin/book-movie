@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block page_content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4 panel panel-default">
+
+            <h1 class="margin-base-vertical aaa">用户注册</h1>
+
+            <p>
+                注册图书借阅系统
+            </p>
+
+            <p>
+                开始阅读吧
+            </p>
+
+            <form class="margin-base-vertical" method="POST">
+                {{form.hidden_tag()}}
+                <p class="input-group">
+                    <span class="input-group-addon"><span class="icon-user"></span></span>
+                    {{form.name(class="form-control input-lg aaa",placeholder="姓名")}}
+                </p>
+                <p class="input-group">
+                    <span class="input-group-addon"><span class="icon-key"></span></span>
+                    {{form.email(class="form-control input-lg aaa",placeholder="E-mail")}}
+                </p>
+                <p class="input-group">
+                    <span class="input-group-addon"><span class="icon-key"></span></span>
+                    {{form.netid(class="form-control input-lg aaa",placeholder="学号")}}
+                </p>
+                <p class="input-group">
+                    <span class="input-group-addon"><span class="icon-key"></span></span>
+                    {{form.password(class="form-control input-lg aaa",placeholder="密码")}}
+                </p>
+                <p class="input-group">
+                    <span class="input-group-addon"><span class="icon-key"></span></span>
+                    {{form.password2(class="form-control input-lg aaa",placeholder="确认密码")}}
+                </p>
+                <p class="help-block text-center">
+                    <small>点击即可注册</small>
+                </p>
+                <p class="text-center">
+                    {{form.submit(class="btn btn-success btn-lg aaa")}}
+                </p>
+                </span>
+            </form>
+        </div>
+    </div>
+    <!-- //main content -->
+</div><!-- //row -->
+{% endblock %}

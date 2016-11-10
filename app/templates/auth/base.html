@@ -1,0 +1,81 @@
+{% extends "bootstrap/base.html" %}
+{% block scripts %}
+{{super()}}
+{{ moment.include_moment() }}
+{{moment.lang('zh')}}
+{% endblock %}
+{% block head %}
+{{ super() }}
+<meta name="baidu-site-verification" content="bgVu5IgO7v" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet"/>
+<script type="text/javascript" src="//cdn.webfont.youziku.com/wwwroot/js/wf/youziku.api.min.js"></script>
+<style>
+    /*CSS源代码*/
+    @import url('http://cdn.gbtags.com/twitter-bootstrap/3.2.0/css/bootstrap.min.css');
+
+    html {
+        background: url('http://pic.90sjimg.com/back_pic/qk/back_origin_pic/00/03/31/e0a42265a4411ee115bf02e92ef3247f.jpg') no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    body {
+        font-size: 16px;
+        background: transparent;
+    }
+
+    h1 {
+        font-weight: 400;
+        font-size: 40px;
+    }
+
+    .panel {
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    .margin-base-vertical {
+        margin: 40px 0;
+    }
+
+</style>
+{% endblock %}
+{% block title %}Suarezlin的网站{% endblock %}
+{% block navbar %}
+<script type="text/javascript">
+    $youziku.load("p,h1,h2,h3,h4,h5,h6,small,a,.aaa", "233a6aefa21e4768ba344f1300dd6240", "Source-Han-Light");
+    $youziku.draw();
+</script>
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Suarezlin的网页</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/">主页</a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li><a href="/dean">教务信息</a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li><a href="/pingjiao">一键评教</a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li><a href="/info">说明</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block content %}
+    {% block page_content %}{% endblock %}
+{% endblock %}

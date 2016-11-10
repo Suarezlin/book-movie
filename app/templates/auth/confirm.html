@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block page_content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4 panel panel-default">
+
+            <h1 class="margin-base-vertical aaa">确认您的账户</h1>
+
+            <p>Dear {{user.name}}</p>
+            <p>欢迎注册图书借阅系统</p>
+            <p>请点击以下链接确认您的账户：</p>
+            <p>{{url_for('auth.confirm',token=token,_external=True}}</p>
+            <p>感谢您的支持</p>
+            <p>注:请勿回复此邮件</p>
+        </div>
+    </div>
+    <!-- //main content -->
+</div><!-- //row -->
+{% endblock %}

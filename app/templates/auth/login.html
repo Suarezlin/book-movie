@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block page_content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4 panel panel-default">
+
+            <h1 class="margin-base-vertical aaa">登录</h1>
+
+            <p>
+                登录图书借阅系统
+            </p>
+
+            <p>
+                开始阅读吧
+            </p>
+
+            <form class="margin-base-vertical" method="POST">
+                {{form.hidden_tag()}}
+                <p class="input-group">
+                    <span class="input-group-addon"><span class="icon-key"></span></span>
+                    {{form.email(class="form-control input-lg aaa",placeholder="E-mail")}}
+                </p>
+                <p class="input-group">
+                    <span class="input-group-addon"><span class="icon-key"></span></span>
+                    {{form.password(class="form-control input-lg aaa",placeholder="密码")}}
+                </p>
+                <p class="input-group">
+                    {{form.remember_me}}
+                </p>
+                <p class="help-block text-center">
+                    <small>点击即可登录</small>
+                </p>
+                <p class="text-center">
+                    {{form.submit(class="btn btn-success btn-lg aaa")}}
+                </p>
+                </span>
+            </form>
+        </div>
+    </div>
+    <!-- //main content -->
+</div><!-- //row -->
+{% endblock %}

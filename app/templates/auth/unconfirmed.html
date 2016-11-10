@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block page_content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4 panel panel-default">
+
+            <h1 class="margin-base-vertical aaa">请确认您的帐户确认您的账户</h1>
+
+            <p>您没有确认您的账户，所以您目前账户功能无法使用</p>
+            <p>请登录您的邮箱查看您的确认账户邮件</p>
+            <p>没有收到邮件？</p><li><a href={{url_for('auth.resend')}}>再次发送</a></li>
+        </div>
+    </div>
+    <!-- //main content -->
+</div><!-- //row -->
+{% endblock %}

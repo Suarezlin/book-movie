@@ -1,80 +1,69 @@
-{% extends "bootstrap/base.html" %}
-{% block scripts %}
-{{super()}}
-{{ moment.include_moment() }}
-{{moment.lang('zh')}}
-{% endblock %}
-{% block head %}
-{{ super() }}
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet"/>
-<script type="text/javascript" src="//cdn.webfont.youziku.com/wwwroot/js/wf/youziku.api.min.js"></script>
-<style>
-    /*CSS源代码*/
-    @import url('http://cdn.gbtags.com/twitter-bootstrap/3.2.0/css/bootstrap.min.css');
+<!DOCTYPE html>
 
-    html {
-        background: url('http://pic.90sjimg.com/back_pic/qk/back_origin_pic/00/03/31/e0a42265a4411ee115bf02e92ef3247f.jpg') no-repeat center center fixed;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-    }
+<html>
+<head>
+    {% block head %}
+    <title>{% block title %}书与影{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    body {
-        font-size: 16px;
-        background: transparent;
-    }
+    <!-- Mobile support -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    h1 {
-        font-weight: 400;
-        font-size: 40px;
-    }
+    <!-- Material Design fonts -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    .panel {
-        background-color: rgba(255, 255, 255, 0.9);
-    }
+    <!-- Bootstrap -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 
-    .margin-base-vertical {
-        margin: 40px 0;
-    }
+    <!-- Bootstrap Material Design -->
+    <link href="static/css/bootstrap-material-design.css" rel="stylesheet">
+    <link href="static/css/ripples.min.css" rel="stylesheet">
 
-</style>
-{% endblock %}
-{% block title %}Suarezlin的网站{% endblock %}
-{% block navbar %}
-<script type="text/javascript">
-    $youziku.load("p,h1,h2,h3,h4,h5,h6,small,a,.aaa", "233a6aefa21e4768ba344f1300dd6240", "Source-Han-Light");
-    $youziku.draw();
-</script>
-<div class="navbar navbar-inverse" role="navigation">
-    <div class="container">
+    <!-- Dropdown.js -->
+    <link href="//cdn.rawgit.com/FezVrasta/dropdown.js/master/jquery.dropdown.css" rel="stylesheet">
+    <!-- Page style -->
+    <link href="static/css/index.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script type=text/javascript>
+        $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+    </script>
+    {% endblock %}
+</head>
+<body>
+{% block body %}
+<div class="navbar navbar-default">
+    <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target=".navbar-responsive-collapse">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Suarezlin的网页</a>
+            <a class="navbar-brand" href="/">书与影</a>
         </div>
-        <div class="navbar-collapse collapse">
+        <div class="navbar-collapse collapse navbar-responsive-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="/">主页</a></li>
-            </ul>
-            <ul class="nav navbar-nav">
-                <li><a href="/dean">教务信息</a></li>
-            </ul>
-            <ul class="nav navbar-nav">
-                <li><a href="/pingjiao">一键评教</a></li>
-            </ul>
-            <ul class="nav navbar-nav">
-                <li><a href="/info">说明</a></li>
+                <li class="active"><a href="javascript:void(0)">读书</a></li>
+                <li><a href="javascript:void(0)">电影</a></li>
             </ul>
         </div>
     </div>
 </div>
-{% endblock %}
 {% block content %}
-    {% block page_content %}{% endblock %}
 {% endblock %}
+<!-- Twitter Bootstrap -->
+<script src="static/js/bootstrap.min.js"></script>
+
+<!-- Material Design for Bootstrap -->
+<script src="static/js/material.js"></script>
+<script src="static/js/ripples.min.js"></script>
+<script>
+    $.material.init();
+</script>
+{% endblock %}
+</body>
+</html>

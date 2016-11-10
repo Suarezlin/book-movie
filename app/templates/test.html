@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+{% block head %}
+{{super()}}
+<script>
+    function logout(){
+        $SCRIPT_ROOT = {{request.script_root | tojson | safe}};
+    $.ajax({
+        type: "POST",
+        url: $SCRIPT_ROOT + '/logout',
+        dataType: "json",
+        data: {
+            "logout":"True"
+        },
+        error: function (XMLResponse) {
+            alert(XMLResponse.responseText)
+        },
+        success: function (data, textStatus) {
+            if (data.result=='success'){
+                $('#myModal').modal();
+            }
+        }
+    });
+    return false;
+    }
+</script>
+<script>
+    function islogin(){
+        $SCRIPT_ROOT = {{request.script_root | tojson | safe}};
+    $.ajax({
+        type: "POST",
+        url: $SCRIPT_ROOT + '/islogin',
+        dataType: "json",
+        data: {
+            "islogin":"islogin"
+        },
+        error: function (XMLResponse) {
+            alert(XMLResponse.responseText)
+        },
+        success: function (data, textStatus) {
+            if (data.result=='not'){
+                $('#myModal').modal()
+            }
+            else{
+                console.log(data.result)
+            }
+        }
+    });
+    return false;
+    }
+</script>
+<script>
+    function ajaxform() {
+        $SCRIPT_ROOT = {{request.script_root | tojson | safe}};
+    $.ajax({
+        type: "POST",
+        url: $SCRIPT_ROOT + '/login',
+        dataType: "json",
+        data: {
+            "email": $("#email_1").val(),
+            "password": $("#password_1").val(),
+            "remember_me": $("#remember").val()
+        },
+        error: function (XMLResponse) {
+            alert(XMLResponse.responseText)
+        },
+        success: function (data, textStatus) {
+            if (data.result=='success'){
+                alert('success')
+                $('#myModal').modal('hide')
+            }
+            else{
+                alert('fail')
+            }
+        }
+    });
+    return false;
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        islogin()
+        $('#button_logout').click(function(){
+            return logout()
+        })
+        $('#button_1').click(function () {
+            return ajaxform()
+    })
+    })
+
+</script>
+{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-md-4 col-md-offset-4 panel panel-default bs-component" style="
+    padding-top: 15px;
+    padding-bottom: 15px;
+">
+        <form class="form-horizontal">
+            <fieldset>
+                <legend>登录</legend>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-md-2 control-label">Email</label>
+
+                    <div class="col-md-10">
+                        <input type="email" class="form-control" placeholder="Email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword" class="col-md-2 control-label">密码</label>
+
+                    <div class="col-md-10">
+                        <input type="password" class="form-control" placeholder="Password">
+                    </div>
+                </div>
+                <div class="form-group" style="margin-top: 0;">
+                    <!-- inline style is just to demo custom css to put checkbox below input above -->
+                    <div class="col-md-offset-2 col-md-10">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"> 记住我
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-10 col-md-offset-2">
+                            <button type="button" class="btn btn-default" id="button_logout">取消</button>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                登录
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">登录</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" method="post" onSubmit="return ajaxForm()">
+                    <fieldset>
+                        <div class="form-group">
+                            <label for="inputEmail" class="col-md-2 control-label">Email</label>
+
+                            <div class="col-md-10">
+                                <input type="email" class="form-control" placeholder="Email" id="email_1">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword" class="col-md-2 control-label">密码</label>
+
+                            <div class="col-md-10">
+                                <input type="password" class="form-control" placeholder="Password" id="password_1">
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-top: 0;">
+                            <!-- inline style is just to demo custom css to put checkbox below input above -->
+                            <div class="col-md-offset-2 col-md-10">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" id="remember"> 记住我
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default">注册</button>
+                <button type="submit" class="btn btn-primary" id="button_1">登录</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
